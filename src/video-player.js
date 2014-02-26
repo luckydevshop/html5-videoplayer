@@ -13,9 +13,26 @@
         VideoPlayer;
 
     VideoPlayer = {
-        init: function () {},
+        init: function () {
+            video.removeAttribute('controls');
 
-        initializeControls: function () {},
+            if (video.readyState > 0) {
+                // metadata is loaded already, fire event handler manually
+                VideoPlayer.initializeControls();
+            } else {
+                video.addEventListener("loadedmetadata", VideoPlayer.initializeControls, false);
+            }
+
+            // handle button presses/click events
+            VideoPlayer.handleButtonPresses();
+        },
+
+        initializeControls: function () {
+            // setup customized controls
+            totalTime.innerHTML = VideoPlayer.convertTime(video.duration);
+
+            VideoPlayer.showHideControls();
+        },
 
         showHideControls: function () {},
 
