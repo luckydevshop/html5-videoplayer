@@ -84,7 +84,16 @@
             }, false);
         },
 
-        playORpause: function () {},
+        playORpause: function () {
+            if (video.paused || video.ended) {
+                if (video.ended) {
+                    video.currentTime = 0;
+                }
+                video.play();
+            } else {
+                video.pause();
+            }
+        },
 
         adjustVolume: function (event) {},
 
