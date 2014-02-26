@@ -59,7 +59,30 @@
             videoControls.style.zIndex = -1;
         },
 
-        handleButtonPresses: function () {},
+        handleButtonPresses: function () {
+            video.addEventListener('click', VideoPlayer.playORpause, false);
+            play.addEventListener('click', VideoPlayer.playORpause, false);
+            volumeTick.addEventListener('click', VideoPlayer.adjustVolume, false);
+
+            video.addEventListener('play', function() {
+                play.title = 'Pause';
+                play.childNodes[0].classList.remove("icon-play");
+                play.childNodes[0].className += " icon-pause";
+                VideoPlayer.trackPlayProgress();
+            }, false);
+
+            video.addEventListener('pause', function() {
+                play.title = 'Play';
+                play.childNodes[0].classList.remove("icon-pause");
+                play.childNodes[0].className += " icon-play";
+                VideoPlayer.stopTrackingPlayProgress();
+            }, false);
+
+            video.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.pause();
+            }, false);
+        },
 
         playORpause: function () {},
 
