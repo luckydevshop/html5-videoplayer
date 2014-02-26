@@ -1,12 +1,16 @@
 {
     "name": "html5-videoplayer",
-    "Version": "0.1.0",
+    "version": "0.1.0",
     "dependencies": {},
     "devDependencies": {
         "grunt": "latest",
         "grunt-cli": "latest",
         "jshint": "latest",
         "grunt-contrib-jshint": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-csslint": "latest",
+        "grunt-contrib-cssmin": "latest",
+        "grunt-contrib-compress": "latest",
         "grunt-notify": "latest"
     }
 }

@@ -20,7 +20,53 @@ module.exports = function (grunt) {
                     jQuery: true
                 }
             },
-            defaults: ['public/assets/js/*.js']
+            defaults: ['src/*.js']
+        },
+
+        uglify: {
+            target: {
+                options: {
+                    banner: '/*!\r\n * <%= pkg.name %> \r\n * version: <%= pkg.version %> \r\n * build date: <%= grunt.template.today("yyyy-mm-dd") %> \r\n */\r\n',
+                    mangle: true,
+                    compress: true,
+                    report: 'gzip',
+                },
+                files: {
+                    'dist/video-player.min.js': ['src/video-player.js']
+                }
+            }
+        },
+
+        csslint: {
+            defaults: {
+                src: ['src/video-player.css']
+            }
+        },
+
+        cssmin: {
+            add_banner: {
+                options: {
+                    banner: '/*!\r\n * <%= pkg.name %> \r\n * version: <%= pkg.version %> \r\n * build date: <%= grunt.template.today("yyyy-mm-dd") %> \r\n */',
+                },
+                files: {
+                    'dist/video-player.min.css': ['src/video-player.css']
+                }
+            }
+        },
+
+        compress: {
+            defaults: {
+                options: {
+                    archive: 'html5-videoplayer.zip'
+                },
+                files: [
+                    {
+                        src: ['src/*'],
+                        desc: 'html5-videoplayer',
+                        filter: 'isFile'
+                    }
+                ]
+            }
         },
 
         notify: {
@@ -33,7 +79,11 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-notify');
 
-    runt.registerTask('default', ['jshint', 'notify']);
+    grunt.registerTask('default', ['jshint', 'uglify', 'csslint', 'cssmin', 'compress', 'notify']);
 };
