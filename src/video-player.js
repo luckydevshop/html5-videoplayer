@@ -95,7 +95,28 @@
             }
         },
 
-        adjustVolume: function (event) {},
+        adjustVolume: function (event) {
+            var level = event.target.getAttribute('id');
+
+            if (level === "master-volume") {
+                if (video.volume > 0) {
+                    video.volume = 0;
+                } else {
+                    video.volume = 1;
+                }
+            } else {
+                level = parseInt(level);
+                if (isNaN(level)) {
+                    console.log("NaN, not changing level");
+                } else {
+                    if (level === 1) {
+                        video.volume = 1;
+                    } else {
+                        video.volume = level * 0.1;
+                    }
+                }
+            }
+        },
 
         trackPlayProgress: function () {},
 
