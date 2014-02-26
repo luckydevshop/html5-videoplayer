@@ -30,6 +30,7 @@ module.exports = function (grunt) {
                     mangle: true,
                     compress: true,
                     report: 'gzip',
+                    sourceMap: true
                 },
                 files: {
                     'dist/video-player.min.js': ['src/video-player.js']
