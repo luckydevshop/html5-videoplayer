@@ -1,0 +1,88 @@
+video {
+    position: relative;
+    height: 480px;
+    width: 852px;
+}
+
+.video-wrapper {
+    position: relative;
+}
+
+#controls {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px 8px 0 0;
+    bottom: 4px;
+    color: white;
+    display: block;
+    height: 30px;
+    left: 0;
+    margin-left: 185px;
+    opacity: 1;
+    padding: 10px;
+    position: absolute;
+    width: 440px;
+}
+#controls i {
+    color: white;
+}
+
+.btn-player {
+    background-color: transparent;
+    border: none;
+    padding: 8px 12px;
+}
+
+#action {
+    width: 35px;
+}
+
+.video-controls .progress-bar.inline {
+    display: inline-block;
+    width: 250px;
+}
+
+.progress-bar {
+    background: #0e0e0e;
+    background: -moz-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0e0e0e), color-stop(100%, #7d7e7d));
+    background: -webkit-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+    background: -o-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+    background: -ms-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+    background: linear-gradient(to bottom, #0e0e0e 0%, #7d7e7d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 );
+    border-radius: 4px;
+    height: 15px;
+}
+
+#bar {
+    background: #a9e4f7;
+    background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a9e4f7), color-stop(100%, #0fb4e7));
+    background: -webkit-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+    background: -o-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+    background: -ms-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+    background: linear-gradient(to bottom, #a9e4f7 0%, #0fb4e7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9e4f7', endColorstr='#0fb4e7',GradientType=0 );
+    border-radius: 4px;
+    display: inline-block;
+    height: 15px;
+}
+
+#volume {
+    cursor: default;
+}
+
+.volume-mark {
+    background-color: white;
+    display: inline-block;
+    height: 10px;
+    width: 4px;
+}
+.volume-mark:hover {
+    cursor: pointer;
+    height: 13px;
+}
+
+.volume-mark.active {
+    background-color: #1e5799;
+}
