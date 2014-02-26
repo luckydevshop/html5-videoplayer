@@ -118,11 +118,21 @@
             }
         },
 
-        trackPlayProgress: function () {},
+        trackPlayProgress: function () {
+            (progressTrack = function () {
+                VideoPlayer.updatePlayProgress();
+                VideoPlayer.playProgressInterval = setTimeout(progressTrack, 50);
+            })();
+        },
 
-        updatePlayProgress: function () {},
+        updatePlayProgress: function () {
+            playTime.innerHTML = VideoPlayer.convertTime(video.currentTime);
+            playProgressBar.style.width = parseInt(((video.currentTime / video.duration) * 100), 10) + "%";
+        },
 
-        stopTrackingPlayProgress: function () {},
+        stopTrackingPlayProgress: function () {
+            clearTimeout(VideoPlayer.playProgressInterval);
+        },
 
         convertTime: function (time) {
             var minutes = parseInt(time / 60, 10),
