@@ -34,11 +34,30 @@
             VideoPlayer.showHideControls();
         },
 
-        showHideControls: function () {},
+        showHideControls: function () {
+            // attach hover events, try to account for IE
+            if (video.addEventListener && videoControls.addEventListener) {
+                video.addEventListener('mouseover', VideoPlayer.showControls, false);
+                video.addEventListener('mouseout', VideoPlayer.hideControls, false);
+                videoControls.addEventListener('mouseover', VideoPlayer.showControls, false);
+                videoControls.addEventListener('mouseout', VideoPlayer.hideControls, false);
+            } else {
+                video.attachEvent('onmouseover', VideoPlayer.showControls, false);
+                video.attachEvent('onmouseout', VideoPlayer.hideControls, false);
+                videoControls.attachEvent('onmouseover', VideoPlayer.showControls, false);
+                videoControls.attachEvent('onmouseout', VideoPlayer.hideControls, false);
+            }
+        },
 
-        showControls: function () {},
+        showControls: function () {
+            videoControls.style.opacity = 1;
+            videoControls.style.zIndex = 2;
+        },
 
-        hideControls: function () {},
+        hideControls: function () {
+            videoControls.style.opacity = 0;
+            videoControls.style.zIndex = -1;
+        },
 
         handleButtonPresses: function () {},
 
