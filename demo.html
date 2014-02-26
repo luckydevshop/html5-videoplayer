@@ -11,11 +11,17 @@
     </head>
     <body>
         <div id="page-container">
-            <video height="404" width="720">
+            <video id="video-player" height="404" width="720">
                 <source src="test_videos/girls_480.m4v" type="video/mp4">
                 <source src="test_videos/girls_480.webm" type="video/webm">
                 <source src="test_videos/girls_480.ogv" type="video/ogg">
             </video>
+            <div class="controls">
+                <button id="action"></button>
+                <span id="play-time"></span>
+                <progress id="progress"></progress>
+                <span id="total-time"></span>
+            </div>
         </div>
         <script src="dist/video-player.min.js"></script>
     </body>
