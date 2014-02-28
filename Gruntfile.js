@@ -44,13 +44,21 @@ module.exports = function (grunt) {
             }
         },
 
+        autoprefixer: {
+            dist: {
+                files: {
+                    'dist/video-player.css': 'src/video-player.css'
+                }
+            }
+        },
+
         cssmin: {
             add_banner: {
                 options: {
                     banner: '/*!\r\n * <%= pkg.name %> \r\n * version: <%= pkg.version %> \r\n * build date: <%= grunt.template.today("yyyy-mm-dd") %> \r\n */',
                 },
                 files: {
-                    'dist/video-player.min.css': ['src/video-player.css']
+                    'dist/video-player.min.css': ['dist/video-player.css']
                 }
             }
         },
@@ -70,6 +78,13 @@ module.exports = function (grunt) {
             }
         },
 
+        watch: {
+            styles: {
+                files: ['dist/video-player.css'],
+                tasks: ['autoprefixer']
+            }
+        },
+
         notify: {
             options: {
                 enabled: true,
@@ -82,9 +97,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-notify');
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'csslint', 'cssmin', 'compress', 'notify']);
+    grunt.registerTask('default', ['jshint', 'uglify', 'csslint', 'autoprefixer', 'cssmin', 'compress', 'notify']);
 };
