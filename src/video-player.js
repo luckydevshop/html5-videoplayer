@@ -60,6 +60,7 @@ VideoPlayer = {
     handleButtonPresses: function () {
         video.addEventListener('click', VideoPlayer.playORpause, false);
         play.addEventListener('click', VideoPlayer.playORpause, false);
+        fullscreen.addEventListener('click', VideoPlayer.fullScreen, false);
 
         // iterate over each volume mark
         [].forEach.call(
@@ -134,6 +135,36 @@ VideoPlayer = {
 
     stopTrackingPlayProgress: function () {
         clearTimeout(VideoPlayer.playProgressInterval);
+    },
+
+    fullScreen: function () {
+        if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
+            if (fullscreen.classList.contains('active')) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                fullscreen.classList.remove('active');
+            } else {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.mozRequestFullScreen) {
+                    video.mozRequestFullScreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+                fullscreen.classList.add('active');
+            }
+        } else {
+            fullscreen.classList.add('error');
+        }
     },
 
     convertTime: function (time) {
