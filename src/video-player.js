@@ -6,6 +6,7 @@ var video           = document.querySelector('.video-player'),
     playTime        = document.querySelector('.play-time'),
     totalTime       = document.querySelector('.total-time'),
     playProgressBar = document.querySelector('.progress'),
+    fullscreen      = document.querySelector('.fullscreen'),
     VideoPlayer;
 
 VideoPlayer = {
