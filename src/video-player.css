@@ -41,31 +41,39 @@ video {
     width: 250px;
 }
 
-.progress-bar {
-    background: #0e0e0e;
-    background: -moz-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0e0e0e), color-stop(100%, #7d7e7d));
-    background: -webkit-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
-    background: -o-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
-    background: -ms-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
-    background: linear-gradient(to bottom, #0e0e0e 0%, #7d7e7d 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 );
-    border-radius: 4px;
-    height: 15px;
+progress[value] {
+    border: none;
+    height: 18px;
+    width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-#bar {
-    background: #a9e4f7;
-    background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a9e4f7), color-stop(100%, #0fb4e7));
-    background: -webkit-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
-    background: -o-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
-    background: -ms-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
-    background: linear-gradient(to bottom, #a9e4f7 0%, #0fb4e7 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9e4f7', endColorstr='#0fb4e7',GradientType=0 );
+progress[value]::-webkit-progress-bar {
+    background: #eee;
     border-radius: 4px;
-    display: inline-block;
-    height: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-moz-progress-bar {
+    background: #eee;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+    background: linear-gradient(to bottom, rgba(179,220,237,1) 0%,rgba(41,184,229,1) 50%,rgba(188,224,238,1) 100%);
+    border-radius: 4px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    position: relative;
+}
+
+progress[value]::-moz-progress-value {
+    background: linear-gradient(to bottom, rgba(179,220,237,1) 0%,rgba(41,184,229,1) 50%,rgba(188,224,238,1) 100%);
+    border-radius: 4px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    position: relative;
 }
 
 #volume {
