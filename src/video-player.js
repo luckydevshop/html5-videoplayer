@@ -97,7 +97,7 @@ VideoPlayer = {
     },
 
     adjustVolume: function (event) {
-        var level = event.target.getAttribute('id');
+        var level = event.target.getAttribute('data-level');
 
         if (level === "master-volume") {
             if (video.volume > 0) {
