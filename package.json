@@ -9,8 +9,10 @@
         "grunt-contrib-jshint": "latest",
         "grunt-contrib-uglify": "latest",
         "grunt-contrib-csslint": "latest",
+        "grunt-autoprefixer": "latest",
         "grunt-contrib-cssmin": "latest",
         "grunt-contrib-compress": "latest",
+        "grunt-contrib-watch": "latest",
         "grunt-notify": "latest"
     }
 }
