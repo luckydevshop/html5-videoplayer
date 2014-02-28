@@ -1,14 +1,11 @@
 "use strict";
 
-var video             = document.getElementById('video-player'),
-    videoControls     = document.getElementById('controls'),
-    play              = document.getElementById('action'),
-    playTime          = document.getElementById('play-time'),
-    totalTime         = document.getElementById('total-time'),
-    progressContainer = document.getElementById('progress'),
+var video           = document.querySelector('.video-player'),
+    videoControls   = document.querySelector('.controls'),
+    play            = document.querySelector('.action'),
+    playTime        = document.querySelector('.play-time'),
+    totalTime       = document.querySelector('.total-time'),
     playProgressBar = document.querySelector('.progress'),
-    volume            = document.getElementById('volume'),
-    volumeTick        = document.querySelectorAll('.volume-mark'),
     VideoPlayer;
 
 VideoPlayer = {
@@ -51,21 +48,28 @@ VideoPlayer = {
     },
 
     showControls: function () {
-        videoControls.style.opacity = 1;
+        videoControls.classList.remove('hidden');
         videoControls.style.zIndex = 2;
     },
 
     hideControls: function () {
-        videoControls.style.opacity = 0;
+        videoControls.classList.add('hidden');
         videoControls.style.zIndex = -1;
     },
 
     handleButtonPresses: function () {
         video.addEventListener('click', VideoPlayer.playORpause, false);
         play.addEventListener('click', VideoPlayer.playORpause, false);
-        volumeTick.addEventListener('click', VideoPlayer.adjustVolume, false);
 
-         video.addEventListener('play', function () {
+        // iterate over each volume mark
+        [].forEach.call(
+            document.querySelectorAll('.volume-mark'),
+            function (el) {
+                el.addEventListener('click', VideoPlayer.adjustVolume, false);
+            }
+        );
+
+        video.addEventListener('play', function () {
             play.innerHTML = '||';
             VideoPlayer.trackPlayProgress();
         }, false);
