@@ -6,12 +6,14 @@ var video             = document.getElementById('video-player'),
     playTime          = document.getElementById('play-time'),
     totalTime         = document.getElementById('total-time'),
     progressContainer = document.getElementById('progress'),
-    playProgressBar   = document.getElementById('bar'),
+    playProgressBar = document.querySelector('.progress'),
     volume            = document.getElementById('volume'),
     volumeTick        = document.querySelectorAll('.volume-mark'),
     VideoPlayer;
 
 VideoPlayer = {
+    playProgressInterval: undefined,
+
     init: function () {
         video.removeAttribute('controls');
 
@@ -63,17 +65,13 @@ VideoPlayer = {
         play.addEventListener('click', VideoPlayer.playORpause, false);
         volumeTick.addEventListener('click', VideoPlayer.adjustVolume, false);
 
-        video.addEventListener('play', function () {
-            play.title = 'Pause';
-            play.childNodes[0].classList.remove("icon-play");
-            play.childNodes[0].className += " icon-pause";
+         video.addEventListener('play', function () {
+            play.innerHTML = '||';
             VideoPlayer.trackPlayProgress();
         }, false);
 
         video.addEventListener('pause', function () {
-            play.title = 'Play';
-            play.childNodes[0].classList.remove("icon-pause");
-            play.childNodes[0].className += " icon-play";
+            play.innerHTML = '&gt;';
             VideoPlayer.stopTrackingPlayProgress();
         }, false);
 
@@ -120,13 +118,14 @@ VideoPlayer = {
     trackPlayProgress: function () {
         (function progressTrack() {
             VideoPlayer.updatePlayProgress();
-            VideoPlayer.playProgressInterval = setTimeout(progressTrack, 50);
+            VideoPlayer.playProgressInterval = setTimeout(progressTrack, 500);
         }());
     },
 
     updatePlayProgress: function () {
+        var progressAmount = parseInt(((video.currentTime / video.duration) * 100), 10);
         playTime.innerHTML = VideoPlayer.convertTime(video.currentTime);
-        playProgressBar.style.width = parseInt(((video.currentTime / video.duration) * 100), 10) + "%";
+        playProgressBar.setAttribute('value', progressAmount);
     },
 
     stopTrackingPlayProgress: function () {
