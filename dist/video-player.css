@@ -19,7 +19,9 @@ video {
     opacity: 0.8;
     padding: 10px;
     position: absolute;
+    -webkit-transition-property: opacity, z-index;
     transition-property: opacity, z-index;
+    -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
 }
 .controls i {
@@ -74,6 +76,7 @@ progress[value] {
 progress[value]::-webkit-progress-bar {
     background: #eee;
     border-radius: 4px;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
@@ -84,8 +87,11 @@ progress[value]::-moz-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(179,220,237,1)), color-stop(50%, rgba(41,184,229,1)), to(rgba(188,224,238,1)));
+    background: -webkit-linear-gradient(top, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
     background: linear-gradient(to bottom, rgba(179,220,237,1) 0%,rgba(41,184,229,1) 50%,rgba(188,224,238,1) 100%);
     border-radius: 4px; 
+    -webkit-background-size: 35px 20px, 100% 100%, 100% 100%; 
     background-size: 35px 20px, 100% 100%, 100% 100%;
     position: relative;
 }

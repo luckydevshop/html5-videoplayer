@@ -10,17 +10,26 @@
         <link rel="stylesheet" href="dist/video-player.min.css">
     </head>
     <body>
-        <div id="page-container">
-            <video id="video-player" height="404" width="720">
+        <div class="video-wrapper">
+            <video class="video-player" height="404" width="720">
                 <source src="test_videos/girls_480.m4v" type="video/mp4">
                 <source src="test_videos/girls_480.webm" type="video/webm">
                 <source src="test_videos/girls_480.ogv" type="video/ogg">
             </video>
-            <div id="controls">
-                <button id="action"></button>
-                <span id="play-time">0:00</span>
-                <progress id="progress"></progress>
-                <span id="total-time">0:00</span>
+            <div class="controls">
+                <button class="action">&gt;</button>
+                <span class="play-time">0:00</span>
+                <progress class="progress" max="100" value="0"></progress>
+                <span class="total-time">0:00</span>
+                <div class="volume">
+                    <span class="volume-mark" data-level="0"></span>
+                    <span class="volume-mark" data-level="2"></span>
+                    <span class="volume-mark" data-level="4"></span>
+                    <span class="volume-mark" data-level="6"></span>
+                    <span class="volume-mark" data-level="8"></span>
+                    <span class="volume-mark" data-level="10"></span>
+                </div>
+                <button class="fullscreen">FS</button>
             </div>
         </div>
         <script src="dist/video-player.min.js"></script>
